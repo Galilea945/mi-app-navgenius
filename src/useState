@@ -1,0 +1,69 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+const LoginScreen = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // Aquí podrías implementar la lógica para autenticar al usuario
+    console.log(`Nombre: ${name}, Email: ${email}, Contraseña: ${password}`);
+    // Por ejemplo, podrías hacer una llamada a una API para validar los datos
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>Nombre:</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setName}
+        value={name}
+        placeholder="Ingresa tu nombre"
+      />
+
+      <Text style={styles.label}>Correo electrónico:</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setEmail}
+        value={email}
+        placeholder="Ingresa tu correo electrónico"
+        keyboardType="email-address"
+      />
+
+      <Text style={styles.label}>Contraseña:</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setPassword}
+        value={password}
+        placeholder="Ingresa tu contraseña"
+        secureTextEntry={true}
+      />
+
+      <Button title="Iniciar sesión" onPress={handleLogin} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  label: {
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+  },
+  input: {
+    height: 40,
+    width: '100%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 20,
+    padding: 10,
+  },
+});
+
+export default LoginScreen;
